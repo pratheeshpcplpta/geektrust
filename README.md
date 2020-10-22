@@ -15,6 +15,8 @@ You need to design a system to find out how much amount a user has paid the bank
 
 
 ### Database configuration
+Using a simple database to store the information about loan and emi details
+
 You can change db connection details in .env file
 
 Domine : valid config value mysql, sqlite
