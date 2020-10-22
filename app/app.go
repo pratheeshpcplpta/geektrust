@@ -14,6 +14,11 @@ type App struct {
 
 func InitApp() *App {
 	connObje := App{}
+
+	// check env file exists or not
+	if _, err := os.Stat(".env"); os.IsNotExist(err) {
+		panic("Unable to find .env file. Should create a file with name .env")
+	}
 	godotenv.Load()
 	//initiate models
 
