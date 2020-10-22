@@ -84,7 +84,7 @@ func (bl *BalanceRequest) Balance() BalanceResponse {
 
 		emiobjectInstance := app.DB
 		emiobjectInstance = emiobjectInstance.Where("emi_id = ? ", emil__id)
-		emiobjectInstance = emiobjectInstance.Limit(bl.EmiNumber)
+		emiobjectInstance = emiobjectInstance.Limit(bl.EmiNumber + 1)
 		emiobjectInstance = emiobjectInstance.Order("id ASC")
 		emiobjectInstance.Find(&records)
 

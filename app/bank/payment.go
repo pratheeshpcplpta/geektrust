@@ -71,7 +71,7 @@ func (payment *PaymentRequest) Payment() PaymentResponse {
 		emiobjectInstance := app.DB
 		emiobjectInstance = emiobjectInstance.Where("emi_id = ?", emil__id)
 		emiobjectInstance = emiobjectInstance.Limit(1)
-		emiobjectInstance = emiobjectInstance.Offset(payment.EmiNumber - 1)
+		emiobjectInstance = emiobjectInstance.Offset(payment.EmiNumber)
 		emiobjectInstance = emiobjectInstance.Order("id ASC")
 		emiobjectInstance.Find(&record)
 
