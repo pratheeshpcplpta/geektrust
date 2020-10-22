@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"geektrust/app/bank"
+	"geektrust/app/helpers/color"
 	"os"
 	"strconv"
 )
@@ -74,7 +75,7 @@ func _process_loan() error {
 	err, loan_data := loan.BorrowLoan()
 
 	if err != nil {
-		fmt.Printf("\033[1;31m%s\033[0m \n", err)
+		color.Error(fmt.Sprintf("%v", err))
 	} else {
 		//
 		// Render the content
@@ -121,9 +122,9 @@ func _process_payment() error {
 	response_payment := payment.Payment()
 
 	if response_payment.Status == true {
-		fmt.Printf("\033[1;32m%s\033[0m \n", " Your Loan payment been transfered successfully.")
+		color.Success("Your Loan payment been transfered successfully.")
 	} else {
-		fmt.Printf("\033[1;31m%s\033[0m \n", response_payment.Error)
+		color.Error(fmt.Sprintf("%v", response_payment.Error))
 	}
 	return nil
 }
@@ -149,7 +150,7 @@ func _process_balance() error {
 	if response.Status == true {
 		fmt.Println(response.BankName, response.BorrowerName, response.AmountPaid, response.NoOfEmiLeft)
 	} else {
-		fmt.Printf("\033[1;31m%s\033[0m \n", response.Error)
+		color.Error(fmt.Sprintf("%v", response.Error))
 	}
 
 	return nil
